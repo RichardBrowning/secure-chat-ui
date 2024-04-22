@@ -1,0 +1,17 @@
+.messageMainContainer {
+    background-color: lightgray;
+    max-width: 55%;
+    width: fit-content;
+    /** maxWidth: 500,
+    padding: 14,
+    alignItems: 'center', */
+}
+
+.messageMainContainer.isFirstPerson{
+    background-color: #0078fe;
+    margin-left: 100px;
+    align-items: end;
+    /** maxWidth: 500,
+    padding: 14,
+    alignItems: 'center', */
+}
