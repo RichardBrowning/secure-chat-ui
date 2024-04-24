@@ -3,7 +3,7 @@
 */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Col, Row } from 'react-bootstrap';
+import { Navbar, Nav, Col, Row, Button } from 'react-bootstrap';
 import { ArrowBackOutline, ChatbubblesOutline } from 'react-ionicons';
 import {THEME_COLOR} from '../../config';
 import { useMediaQuery } from 'react-responsive';
@@ -29,8 +29,9 @@ function ChatTitleBar({ chatId, lastMessageTime }) {
 						<div style={{ fontSize: '20px', fontWeight: 'bold', color:"lightgray", marginBottom: '5px'}}>{ chatId }</div>
 						<div style={{ fontSize: '14px', color:"darkgray"}}>last message at { lastMessageTime }</div>
 					</Col>
-
 				</Row>
+				<Button id="connect" variant="outline" title='connect' type='submit' >Connect</Button>
+				<Button id="disconnect" variant="outline" title='disconnect' type='submit' disabled >Disconnect</Button>
 			</Navbar.Brand>
 		</Navbar>
 	);

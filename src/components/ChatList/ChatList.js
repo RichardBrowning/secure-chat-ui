@@ -8,8 +8,8 @@ import { BG_COLOR, THEME_COLOR } from '../../config';
 function ChatList({ isMobile, selectedChatId, setSelectedChatId}) {
 	const isXs = useMediaQuery({ maxWidth: 767 });
 	// parse url parameters
-	const chatIdList = ["Chat 1", "Chat 2", "Chat 3"]; // TODO: Sample messages
-	{/** Set ListGroup.Item related to selectedChatId when clicked */}
+	const chatIdList = ["club"]; // TODO: Sample messages
+	
 	return (
 		<Container fluid className="h-100 p-0" style={{backgroundColor: BG_COLOR}}>
 			<Row style={{ backgroundColor: THEME_COLOR }}>

@@ -6,7 +6,7 @@ import InputModule from '../../UI/modules/InputModule';
 import { Container, Row } from 'react-bootstrap';
 import MessageBubble from '../../UI/modules/MessageBubble';
 
-function ChatPage({ isMobile, selectedChatId, setSelectedChatId }) {
+function ChatPage({ isMobile, selectedChatId, setSelectedChatId, uiCore }) {
 	const messageList = [
 		{ message: "Hello there!", isFirstPerson: false },
 		{ message: "Hello too!", isFirstPerson: true },
@@ -29,6 +29,7 @@ function ChatPage({ isMobile, selectedChatId, setSelectedChatId }) {
 		{ message: "乘风破浪，威震八方，势不可挡!", isFirstPerson: true },
 		{ message: "Urah!", isFirstPerson: false}
 	]; // sample message data
+
 	let { chatId } = useParams();
 	// let history = useHistory();
 	useEffect(() => {
@@ -43,19 +44,11 @@ function ChatPage({ isMobile, selectedChatId, setSelectedChatId }) {
 			<div className="p-3 overflow-auto">
 				{/* TODO: Chat messages will be displayed here */}
 				{messageList.map((message, index) => (
-					// <div key={index} className={message.isFirstPerson ? 'text-right' : 'text-left'}>
-					// 	<div className="p-3 border rounded bg-white d-inline-block">
-					// 		<p>{message.message}</p>
-					// 	</div>
-					// </div>
 					<MessageBubble key={index} messageText={message.message} isFirstPerson={message.isFirstPerson} />
 				))}
-				{/* <div className="p-3 border rounded bg-white">
-					<p>Chat content for: {chatId}</p>
-				</div> */}
 			</div>
 			{/* Input form will go here */}
-			<InputModule chatId={chatId} />
+			<InputModule chatId={chatId} uiCore={uiCore}/>
 		</Container>
 	);
 }

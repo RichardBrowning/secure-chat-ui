@@ -5,6 +5,10 @@ import LoginPage from './components/LoginPage/LoginPage';
 import MainPage from './components/MainPage/MainPage';
 import { getBuild } from './helpers/loginHelper';
 
+// import { Stomp } from '@stomp/stompjs';
+// import SockJS from 'sockjs-client';
+// import 'stomp-websocket';
+
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('isLoggedIn'));
     

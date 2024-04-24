@@ -2,9 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 /*  need emoji, file, and send icons */
 import { HappyOutline, DocumentAttachOutline, SendOutline } from 'react-ionicons';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { sendMessage, sendFile } from '../../helpers/sendHelper';
 
-function InputModule({ chatId }) {
+function InputModule({ chatId, uiCore }) {
     // monitors input text
     const [inputText, setInputText] = useState('');
     // monitors file Path of the attachment
@@ -18,40 +17,22 @@ function InputModule({ chatId }) {
         setInputText('');
     }, [chatId]);
     
-    const selectFile = () => {
-        // open file selection dialog
-        fileInputRef.current.click();
-    }
-    const handleFileChange = (e) => {
-        // pop-up file selection dialog
-        const file = e.target.files[0];
-        if (file) {
-            setFilePath(URL.createObjectURL(file));
-        }
-    }
     const toggleEmojiDialog = () => {
         // if emoji dialog
 
     }
 
-    const sendMessageOrFile = () => {
+    const sendMessageOrFile = (e) => {
+        e.preventDefault();
         // if file path is selected, send file
         if (filePath) {
             // send file
-            sendFile(filePath).then((response) => {
-                console.log(response);
-                // reset file path
-                setFilePath(null);
-            });
+            console.log("under development");
         } else {
             // send message 
             if (inputText) {
-                // send message
-                sendMessage(inputText).then((response) => {
-                    console.log(response);
-                    // reset input text
-                    setInputText('');
-                });
+                console.log("handled with other components");
+                setInputText('');
             } else {
                 alert('Please enter a message or select a file to send.');
             }
@@ -74,7 +55,7 @@ function InputModule({ chatId }) {
                     <HappyOutline color="white" height="25px" width="25px" title={'Emoji'} />
                 </Button>
                 {/** send button */}
-                <Button variant="primary" type="submit" onClick={sendMessageOrFile}>
+                <Button id="send" variant="primary" type="submit" onClick={sendMessageOrFile}>
                     <SendOutline color="white" height="25px" width="25px" title={'Send'} />
                 </Button>
             {/* <DocumentAttachOutline color={filePath ? "green" : "white"} height="25px" width="25px" title={'Attachment'} /> */}
