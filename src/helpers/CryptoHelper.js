@@ -5,7 +5,7 @@ import RandomNumberGenerator from './RandomNumberGenerator';
 
 class CryptoHelper {
     constructor(seed) {
-        this.generator = new RandomNumberGenerator(seed);
+        this.generator = new RandomNumberGenerator(seed = seed);
 
         // create encryptor
         this.encryptor = new Array(256);

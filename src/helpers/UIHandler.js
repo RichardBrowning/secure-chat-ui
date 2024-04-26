@@ -2,22 +2,25 @@
  * UI handler and its WebSocketHelper
  */
 import { Client } from '@stomp/stompjs';
-import { WebSocketServer, WebSocket } from 'ws';
+import { WebSocket } from 'ws';
+
 import CryptoHelper from "./CryptoHelper";
 import Decoder from "./Decoder";
 import Encoder from "./Encode";
 
 Object.assign(global, { WebSocket });
-Object.assign(global, { WebSocketServer });
 
 var seed = null;
 var token = null;
 
+const delay = (ms) => {
+	return new Promise((resolve, reject) => setTimeout(resolve, ms))
+};
+
 class UIHandler {
-	constructor( buildCode ) {
+	constructor(seed) {
 		// INPROVE: this seed is a global var
-		seed = buildCode;
-		this.websockethelper = new WebSocketHelper();
+		this.websockethelper = new WebSocketHelper(seed);
         this.encoder = new Encoder();
 	}
 
@@ -73,8 +76,8 @@ class UIHandler {
 }
 
 class WebSocketHelper {
-	constructor(serverUrl = 'ws://localhost:8080/websocket') {
-		this.serverUrl = 'ws://localhost:8080/websocket';
+	constructor(seed, serverUrl = 'ws://localhost:8080/websocket') {
+		this.serverUrl = serverUrl;
 		this.cryptoHelper = new CryptoHelper(seed);
 		this.users = {};
 		this.groups = {};
@@ -93,14 +96,8 @@ class WebSocketHelper {
 			},
 			onStompError: (frame) => {
 				console.error("Stomp error: ", frame.headers.message);
-			}
+			},
 		});
-
-		// this.stompClient.onConnect = 
-
-		// this.stompClient.onWebSocketError = 
-
-		// this.stompClient.onStompError = 
 
 		console.log("Connecting to the server");
 		this.stompClient.activate();

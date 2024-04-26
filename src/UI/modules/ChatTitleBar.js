@@ -25,13 +25,15 @@ function ChatTitleBar({ chatId, lastMessageTime }) {
 					<Col xs={2} className='my-auto'>
 						<ChatbubblesOutline color="white" title={'Chat'} height="25px" width="25px" />
 					</Col>
-					<Col xs={10}>
+					<Col xs={8}>
 						<div style={{ fontSize: '20px', fontWeight: 'bold', color:"lightgray", marginBottom: '5px'}}>{ chatId }</div>
 						<div style={{ fontSize: '14px', color:"darkgray"}}>last message at { lastMessageTime }</div>
 					</Col>
+					<Col xs={2} className='my-auto'>
+						<Button id="join" variant="primary" title='Join' type='submit' >Join</Button>
+					</Col>
 				</Row>
-				<Button id="connect" variant="outline" title='connect' type='submit' >Connect</Button>
-				<Button id="disconnect" variant="outline" title='disconnect' type='submit' disabled >Disconnect</Button>
+				
 			</Navbar.Brand>
 		</Navbar>
 	);

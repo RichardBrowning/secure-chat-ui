@@ -5,8 +5,7 @@ import { Container, ListGroup, Row } from 'react-bootstrap';
 import ChatListTitleBar from '../../UI/modules/ChatListTitleBar';
 import { BG_COLOR, THEME_COLOR } from '../../config';
 
-function ChatList({ isMobile, selectedChatId, setSelectedChatId}) {
-	const isXs = useMediaQuery({ maxWidth: 767 });
+function ChatList({ isXs, selectedChatId, setSelectedChatId }) {
 	// parse url parameters
 	const chatIdList = ["club"]; // TODO: Sample messages
 	
@@ -18,7 +17,7 @@ function ChatList({ isMobile, selectedChatId, setSelectedChatId}) {
 			{isXs ? null : (
 				<ListGroup className='m-3'>
 					{chatIdList.map((thisChatId, index) => (
-						<ListGroup.Item variant='dark' action href={`/chat/${thisChatId}`} key={index} active={thisChatId === selectedChatId}>
+						<ListGroup.Item id={thisChatId} variant='dark' action href={`/chat/${thisChatId}`} key={index} active={thisChatId === selectedChatId}>
 							{thisChatId}
 						</ListGroup.Item>
 					))}

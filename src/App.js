@@ -5,10 +5,6 @@ import LoginPage from './components/LoginPage/LoginPage';
 import MainPage from './components/MainPage/MainPage';
 import { getBuild } from './helpers/loginHelper';
 
-// import { Stomp } from '@stomp/stompjs';
-// import SockJS from 'sockjs-client';
-// import 'stomp-websocket';
-
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('isLoggedIn'));
     
@@ -32,7 +28,7 @@ function App() {
 
     return (
         <>
-            { (isLoggedIn === 'true') ? <MainPage buildCode={sessionStorage.getItem('build_code')}/> : <LoginPage onLogin={handleLogin} />}
+            { (isLoggedIn === 'true') ? <MainPage /> : <LoginPage onLogin={handleLogin} />}
         </>
     );
 }
